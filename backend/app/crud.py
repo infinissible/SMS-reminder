@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from . import models, schemas
 
+
 def create_appointment(db: Session, data: schemas.AppointmentCreate):
     appointment = models.Appointment(
         customer_name=data.customer_name,
@@ -12,6 +13,7 @@ def create_appointment(db: Session, data: schemas.AppointmentCreate):
     db.commit()
     db.refresh(appointment)
     return appointment
+
 
 def get_appointments(db: Session):
     return db.query(models.Appointment).all()

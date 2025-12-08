@@ -3,6 +3,7 @@ from .config import settings
 
 client = Client(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN)
 
+
 def send_sms(to: str, body: str) -> str:
     """
     Send an SMS using Twilio.
@@ -15,7 +16,7 @@ def send_sms(to: str, body: str) -> str:
     #     body=body,
     #     from_=settings.TWILIO_FROM_NUMBER,
     #     to=to,
-    # ) 
+    # )
     # return message.sid
     print(f"[FAKE SMS] to={to} body={body}")
     return "FAKE-SID-12345"
