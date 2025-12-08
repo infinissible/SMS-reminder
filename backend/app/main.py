@@ -3,8 +3,13 @@ from pydantic import BaseModel
 
 from .sms_service import send_sms
 
-app = FastAPI(title='SMS Reminder Backend')
+from .database import Base, engine
+Base.metadata.create_all(bind=engine)
 
+from .api import router
+
+app = FastAPI(title='SMS Reminder Backend')
+app.include_router(router)
 class TestSmsRequest(BaseModel):
     to: str
     message: str = 'Test SMS from SMS-reminder MVP'
